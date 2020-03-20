@@ -5,15 +5,15 @@ class MySqlite:
     database_name = 'example_database'
     global conn, cursor, table_name
 
-    def __init__(self):
+    def __init__(self, table_name):
+        self.table_name = table_name
         self.conn = sqlite3.connect(self.database_name)
         self.cursor = self.conn.cursor()
 
-    def create_table(self, table_name):
-        self.table_name = table_name
+    def create_table(self):
         query = '''
-        CREATE TABLE IF NOT EXISTS {} (id INTEGER AUTOINCREMENT, task_name TEXT)
-        '''.format(table_name)
+        CREATE TABLE IF NOT EXISTS {} (id INTEGER PRIMARY KEY AUTOINCREMENT, task_name TEXT)
+        '''.format(self.table_name)
         self.cursor.execute(query)
 
     def insert_data(self, task_name):
