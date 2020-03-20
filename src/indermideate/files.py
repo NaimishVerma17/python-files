@@ -6,7 +6,7 @@ def main():
 
     choice = int(input('Enter your choice'))
     mode = 'w' if choice == 1 else 'a' if choice == 2 else 'r'
-    print(mode);
+    print(mode)
 
     file_name = input('Enter a file name')
     if mode != 'r':
